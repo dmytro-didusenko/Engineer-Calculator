@@ -1,0 +1,43 @@
+# Project: Engineer Calcularor
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = main.o pseudograph.o engineerLengthCalc.o engineerWeightCalc.o resource.o gearsCalc.o
+LINKOBJ  = main.o pseudograph.o engineerLengthCalc.o engineerWeightCalc.o resource.o gearsCalc.o
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = "Engineer Calcularor.exe"
+CXXFLAGS = $(CXXINCS) 
+CFLAGS   = $(INCS) 
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.c
+	$(CC) -c main.c -o main.o $(CFLAGS)
+
+pseudograph.o: pseudograph.c
+	$(CC) -c pseudograph.c -o pseudograph.o $(CFLAGS)
+
+engineerLengthCalc.o: engineerLengthCalc.c
+	$(CC) -c engineerLengthCalc.c -o engineerLengthCalc.o $(CFLAGS)
+
+engineerWeightCalc.o: engineerWeightCalc.c
+	$(CC) -c engineerWeightCalc.c -o engineerWeightCalc.o $(CFLAGS)
+
+resource.o: resource.c
+	$(CC) -c resource.c -o resource.o $(CFLAGS)
+
+gearsCalc.o: gearsCalc.c
+	$(CC) -c gearsCalc.c -o gearsCalc.o $(CFLAGS)
