@@ -51,6 +51,7 @@ void metalWeightCalc(){
 	}
 }
 
+
 float circularMetalCalc(float density){
 	float diametr, length;
 	printf("Input parameters\n");

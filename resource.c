@@ -1,11 +1,11 @@
 #include "resource.h"
 #include "pseudograph.h"
 
-typedef struct{
-	int id;
-	char name[20];
+typedef struct{		//user's data type which is using 
+	int id;			//for getting material's options 
+	char name[20];  //from binary file "mat_database.dat"  
 	float value;
-}Material;
+}Material;			
 
 float materialSelection(); 
 float userInputControl();
@@ -16,13 +16,15 @@ int userInputSquareSectionPipeControl(int assortment[], int arrSize);
 int checkGear();
 int checkModul();
 
+//function for selecting material from a binary file
 float materialSelection(){
 	Material mat;
 	int choice;
 	
-	materialList();
+	materialList();	//procedure displays the menu of the metal list
 	FILE* database_file;
 	
+	//checking the condition of creation and opening of a binary file
 	if ((database_file = fopen("mat_database.dat", "rb")) == NULL){
 		printf("It is impossible to open file \n");
 	}
@@ -36,11 +38,12 @@ float materialSelection(){
 		fread(&mat.value, sizeof(float), 1, database_file);
 	
 		fclose(database_file);
-		system("cls");
+		system("cls");	//console cleaning
 		return mat.value;	
 	}
  }
 
+//function for verifying the correctness of user input (floating point numbers)
 float userInputControl(){
 	while(1){
 		char tempArray[10];
@@ -59,6 +62,7 @@ float userInputControl(){
 	}
 }  
 
+//function for verifying the correctness of user input (equal angle rolling metal)
 int userInputEqualAngleControl(int assortment[], int arrSize){
 	while(1){
 		char input[10];
@@ -82,11 +86,12 @@ int userInputEqualAngleControl(int assortment[], int arrSize){
 		}
 		if(flag != 0){
 			printf("Choose the rolled metal height using the following assortment\n");
-			equalAngleMetalAssortment();
+			equalAngleMetalAssortment();	//procedure displays the list of standard values of equal angle rolling metal
 		}	
 	} 
 }
 
+//function for verifying the correctness of user input (channel rolling metal)
 int userInputChannelControl(int assortment[], int arrSize){
 	while(1){
 		char input[10];
@@ -110,11 +115,12 @@ int userInputChannelControl(int assortment[], int arrSize){
 		}
 		if(flag != 0){
 			printf("Choose the rolled metal height using the following assortment\n");
-			channelMetalAssortment();
+			channelMetalAssortment();	//procedure displays the list of standard values of channel rolling metal
 		}	
 	} 
 }
 
+//function for verifying the correctness of user input (I bean rolling metal)
 int userInputIBeanControl(int assortment[], int arrSize){
 	while(1){
 		char input[10];
@@ -138,11 +144,12 @@ int userInputIBeanControl(int assortment[], int arrSize){
 		}
 		if(flag != 0){
 			printf("Choose the rolled metal height using the following assortment\n");
-			IbeamMetalAssortment();
+			IbeamMetalAssortment();	//procedure displays the list of standard values of I beam rolling metal
 		}	
 	} 
 }
 
+//function for verifying the correctness of user input (square section pipe)
 int userInputSquareSectionPipeControl(int assortment[], int arrSize){
 	while(1){
 		char input[10];
@@ -166,11 +173,12 @@ int userInputSquareSectionPipeControl(int assortment[], int arrSize){
 		}
 		if(flag != 0){
 			printf("Choose the rolled metal height using the following assortment\n");
-			squareSectionPipeAssortment();
+			squareSectionPipeAssortment();	//procedure displays the list of standard values of square section pipes
 		}	
 	} 
 }
 
+//function for verifying the correctness of user input (integer numbers from 10 to 90)
 int checkGear(){
 	while(1){
 		int i, flag = 0, number;
@@ -189,6 +197,7 @@ int checkGear(){
 	}
 }
 
+//function for verifying the correctness of user input (integer numbers - modul value)
 int checkModul(){
 	int assortment[20] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 14, 16, 18, 20, 25, 28, 32, 36, 40};
 	int modul, i, modulListSize = 20;
@@ -213,7 +222,7 @@ int checkModul(){
 		}
 		if(flag != 0){
 			printf("Choose modul value using the following modul list\n");
-			modulList();
+			modulList();	//procedure displays the list of standard values of gear moduls
 		}
 	}
 }

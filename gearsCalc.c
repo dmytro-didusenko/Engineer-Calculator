@@ -15,6 +15,7 @@ void gearsCalc(){
 	printf("Input modul\n");
 	modul = checkModul();
 	
+	//code section wich calculates the geometrical options of gears
 	axialDistance = (teethNumGearOne + teethNumGearTwo) * modul / 2;
 	dividingDiameterGearOne = teethNumGearOne * modul;
 	dividingDiameterGearTwo = teethNumGearTwo * modul;
@@ -25,8 +26,9 @@ void gearsCalc(){
 	minDiametrGearTwo = dividingDiameterGearTwo - 1.25 * modul;
 	toothThickness = (PI * modul)/2 + 2;
 	
-	system("cls");
+	system("cls");	//console cleaning
 	
+	//display calculated parameters
 	printf("Input parameters:\n");
 	printf("Gear teeth number (gear #1) - %i\n", teethNumGearOne);
 	printf("Gear teeth number (gear #2) - %i\n", teethNumGearTwo);
@@ -43,16 +45,20 @@ void gearsCalc(){
 	printf("Gear tooth height - %g mm\n", toothHeight);
 	printf("Gear tooth thickness - %g mm\n", toothThickness);
 	
+	
 	printf("\nPress key \"p\" to print output into file or or any key to continue\n");
 	
 	int exitCode = getch();
 	
 	if(exitCode == 112){
 		FILE * output_file;
+		
+		//checking the condition of creation and opening of a text file
 		if ((output_file = fopen("gears_result.txt", "w")) == NULL){
 			printf("It is impossible to create file\n");
 		}
 		else{
+			//printing calculated parameters into text file
 			fprintf(output_file,"Input parameters:\n");
 			fprintf(output_file,"Gear teeth number (gear #1) - %i\n", teethNumGearOne);
 			fprintf(output_file,"Gear teeth number (gear #2) - %i\n", teethNumGearTwo);
