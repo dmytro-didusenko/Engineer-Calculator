@@ -37,9 +37,41 @@ void gearsCalc(){
 	printf("Dividing diameter (gear #1) - %g mm\n", dividingDiameterGearOne);
 	printf("Dividing diameter (gear #1) - %g mm\n", dividingDiameterGearTwo);
 	printf("Max diametr (gear #1) - %g mm\n", maxDiametrGearOne);
-	printf("Max diametn (gear #2) - %g mm\n", maxDiametrGearTwo);
+	printf("Max diametr (gear #2) - %g mm\n", maxDiametrGearTwo);
 	printf("Min diametr (gear #1) - %g mm\n", minDiametrGearOne);
 	printf("Min diametr (gear #2) - %g mm\n", minDiametrGearTwo);
 	printf("Gear tooth height - %g mm\n", toothHeight);
 	printf("Gear tooth thickness - %g mm\n", toothThickness);
+	
+	printf("\nPress key \"p\" to print output into file or or any key to continue\n");
+	
+	int exitCode = getch();
+	
+	if(exitCode == 112){
+		FILE * output_file;
+		if ((output_file = fopen("gears_result.txt", "w")) == NULL){
+			printf("It is impossible to create file\n");
+		}
+		else{
+			fprintf(output_file,"Input parameters:\n");
+			fprintf(output_file,"Gear teeth number (gear #1) - %i\n", teethNumGearOne);
+			fprintf(output_file,"Gear teeth number (gear #2) - %i\n", teethNumGearTwo);
+			fprintf(output_file,"Gear modul - %i\n", modul);
+		
+			fprintf(output_file,"\nOutput parameters:\n");
+			fprintf(output_file,"Axial distance - %g mm\n", axialDistance);
+			fprintf(output_file,"Dividing diameter (gear #1) - %g mm\n", dividingDiameterGearOne);
+			fprintf(output_file,"Dividing diameter (gear #2) - %g mm\n", dividingDiameterGearTwo);
+			fprintf(output_file,"Max diametr (gear #1) - %g mm\n", maxDiametrGearOne);
+			fprintf(output_file,"Max diametr (gear #2) - %g mm\n", maxDiametrGearTwo);
+			fprintf(output_file,"Min diametr (gear #1) - %g mm\n", minDiametrGearOne);
+			fprintf(output_file,"Min diametr (gear #1) - %g mm\n", minDiametrGearTwo);
+			fprintf(output_file,"Gear tooth height - %g mm\n", toothHeight);	
+			fprintf(output_file,"Gear tooth thickness - %g mm\n", toothThickness);	
+	
+			fclose(output_file);
+
+			printf("\nOutput data was written into file \"gears_result.txt\"\n");
+		}
+	}
 }

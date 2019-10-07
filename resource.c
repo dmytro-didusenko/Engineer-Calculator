@@ -24,7 +24,7 @@ float materialSelection(){
 	FILE* database_file;
 	
 	if ((database_file = fopen("mat_database.dat", "rb")) == NULL){
-		printf("It is impossible to open or create file \n");
+		printf("It is impossible to open file \n");
 	}
 	else{
 		printf("Please, make your choice\n");
